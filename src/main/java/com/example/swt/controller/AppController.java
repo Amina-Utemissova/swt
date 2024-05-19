@@ -20,11 +20,11 @@ public class AppController {
 
 
     @PostMapping("/register")
-    public String register(@RequestBody UserDTO userDTO){
+    public Long register(@RequestBody UserDTO userDTO){
 
-        String name = userService.addUser(userDTO);
+        Long id = userService.addUser(userDTO);
 
-        return name;
+        return id;
     }
 
     @PostMapping("/login")

@@ -21,20 +21,19 @@ public class UserImpl implements UserService{
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public String addUser(UserDTO userDTO) {
+    public Long addUser(UserDTO userDTO) {
 
         User user = new User(userDTO.getId(),
                             userDTO.getEmail(),
-                            userDTO.getFirstName(),
-                            userDTO.getLastName(),
+                            userDTO.getName(),
                             this.passwordEncoder.encode(userDTO.getPasswordHash()),
                             userDTO.getRole()
         );
         if(userRepo.findByEmail(user.getEmail())==null){
             userRepo.save(user);
-            return user.getFirstName();
+            return user.getId();
         }
-        return "401 the user already exists";
+        return Long.MIN_VALUE;
     }
 
     @Override
@@ -42,9 +41,9 @@ public class UserImpl implements UserService{
         User user = userRepo.findByEmail(loginDTO.getEmail());
 
         if(user == null || !passwordEncoder.matches(loginDTO.getPasswordHash(),user.getPasswordHash()))
-            return new LoginMesage("Login failed: incorrect email or password", false);
+            return new LoginMesage("Login failed: incorrect email or password", Long.MIN_VALUE);
 
-        return new LoginMesage("Login Success", true);
+        return new LoginMesage("Login Success", user.getId());
 
     }
 }

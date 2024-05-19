@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public interface UserService {
 
 
-    String addUser(UserDTO userDTO);
+    Long addUser(UserDTO userDTO);
 
     LoginMesage login(LoginDTO loginDTO);
 }

@@ -2,7 +2,7 @@ package com.example.swt.payload.response;
 
 public class LoginMesage {
     String message;
-    Boolean status;
+    Long id;
 
     public String getMessage() {
         return message;
@@ -12,16 +12,16 @@ public class LoginMesage {
         this.message = message;
     }
 
-    public Boolean getStatus() {
-        return status;
+    public Long getId() {
+        return id;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public LoginMesage(String message, Boolean status) {
+    public LoginMesage(String message, Long id) {
         this.message = message;
-        this.status = status;
+        this.id = id;
     }
 }

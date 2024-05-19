@@ -14,11 +14,9 @@ public class User {
     @Column(nullable = false, unique = true, length = 50) //email is unique and cannot be null
     private String email;
 
-    @Column(nullable = false, length = 20)
-    private String firstName;
+    @Column(nullable = false, length = 50)
+    private String name;
 
-    @Column(nullable = false, length = 20)
-    private String lastName;
 
     @Column(nullable = false, length = 64)
     private String passwordHash;
@@ -29,14 +27,6 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String email, String firstName, String lastName, String passwordHash, int role) {
-        this.id = id;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.passwordHash = passwordHash;
-        this.role = role;
-    }
 
     public Long getId() {
         return id;
@@ -54,20 +44,20 @@ public class User {
         this.email = email;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public User(Long id, String email, String name, String passwordHash, int role) {
+        this.id = id;
+        this.email = email;
+        this.name = name;
+        this.passwordHash = passwordHash;
+        this.role = role;
     }
 
     public String getPasswordHash() {

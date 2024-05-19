@@ -13,21 +13,37 @@ public class UserDTO {
 
     private Long id;
     private String email;
-    private String firstName;
-    private String lastName;
+    private String name;
     private String passwordHash;
     private int role;
 
 
-    public UserDTO(Long id, String email, String firstName, String lastName, String passwordHash, int role) {
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
+                ", role=" + role +
+                '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public UserDTO(Long id, String email, String name, String passwordHash, int role) {
         this.id = id;
         this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
         this.passwordHash = passwordHash;
         this.role = role;
     }
-
 
     public UserDTO() {
     }
@@ -40,21 +56,6 @@ public class UserDTO {
         this.email = email;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public String getPasswordHash() {
         return passwordHash;
@@ -73,14 +74,4 @@ public class UserDTO {
     }
 
 
-    @Override
-    public String toString() {
-        return "UserDTO{" +
-                "email='" + email + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", passwordHash='" + passwordHash + '\'' +
-                ", role=" + role +
-                '}';
-    }
 }
